@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="card mt-5 text-dark bg-light mb-3">
+        <div class="card-body">
+            <form id="segForm" action="{{url_for('do_segmentation')}}">
+                <div class="row">
+                    <div class="col-6 align-self-center">
+                        <h5 class="text-center">Input</h5>
+                        <div class="mb-3">
+                            <input class="form-control" type="file" id="input-file" name="input-file">
+                        </div>
+                        <div class="row">
+                            <img id="input-img" src="{{url_for('static', filename='images/no-image.png')}}" alt="Input Image" class="img-center">
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <h5 class="text-center">Result</h5>
+                        <div class="row mb-3 justify-content-center">
+                            <div class="col-6">
+                                <select class="form-select" aria-label="Displayed Segmentation" id="seg-part" name="seg-part">
+                                    <option value="" selected>--Select Segmentation--</option>
+                                    <option value="all">All</option>
+                                    <option value="nose">Nose</option>
+                                    <option value="eyes">Eyes</option>
+                                </select>
+                            </div>
+                            <div class="col-2">
+                              <button id="processBtn" type="button" class="btn btn-primary">Process</button>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <img id="result-img" src="{{url_for('static', filename='images/no-image.png')}}" alt="Result Image" class="img-center">
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock  %}
